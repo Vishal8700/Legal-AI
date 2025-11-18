@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+python-multipart
+langchain
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+faiss-cpu
+pypdf
+pydantic
+requests
+python-dotenv
+sentence-transformers
+hf_xet

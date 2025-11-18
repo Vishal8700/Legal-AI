@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material UI Light Theme Design System with HSL colors */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;      /* White */
+    --foreground: 0 0% 0%;        /* Black text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary (Material Blue) */
+    --primary: 211 100% 40%;      /* #1976d2 */
+    --primary-foreground: 0 0% 100%; /* White text on blue */
+
+    --primary-light: 207 90% 54%; /* #42a5f5 */
+    --primary-dark: 212 100% 30%; /* #0d47a1 */
+
+    /* Secondary */
+    --secondary: 210 20% 96%;     /* #f5f5f5 light gray */
+    --secondary-foreground: 0 0% 20%; /* Dark gray text */
+
+    /* Muted */
+    --muted: 210 16% 97%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent */
+    --accent: 207 90% 54%;        /* lighter blue for hover */
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;     /* Red #ef4444 */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & inputs */
+    --border: 220 14% 96%;
+    --input: 0 0% 100%;
+    --ring: 211 100% 40%;
+
+    /* Sidebar specific */
+    --sidebar-bg: 0 0% 100%;
+    --sidebar-border: 220 14% 96%;
+    --sidebar-item-hover: 210 20% 96%;
+    --sidebar-item-active: 211 100% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 211 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-ring: 211 100% 40%;
+  }
+
+  .dark {
+    --background: 0 0% 12%;       /* Dark gray */
+    --foreground: 0 0% 98%;       /* Almost white text */
+
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 211 100% 60%;      /* Lighter blue for dark mode */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 25%;
+    --muted-foreground: 0 0% 80%;
+
+    --accent: 211 100% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 211 100% 60%;
+
+    --sidebar-bg: 0 0% 12%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-item-hover: 0 0% 20%;
+    --sidebar-item-active: 211 100% 60%;
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 211 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-ring: 211 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Scrollbar for Light and Dark Mode */
+@layer base {
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    @apply w-2; /* Width of scrollbar */
+  }
+
+  /* Scrollbar track (background) */
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+    /* Custom dark background */
+    background-color: #f3f4f6; /* Light mode */
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    background-color: #1f1f1f; /* Your custom dark background */
+  }
+
+  /* Scrollbar handle/thumb */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-lg;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: #4b5563; /* Dark mode thumb */
+  }
+
+  /* Scrollbar handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background-color: #6b7280; /* Dark mode thumb hover */
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6; /* Light mode: thumb track */
+  }
+
+  /* Dark mode for Firefox with custom background */
+  .dark * {
+    scrollbar-color: #4b5563 #1f1f1f; /* Dark mode with your custom bg */
+  }
+}
+
+
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-1200 {
+  animation-delay: 1.2s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
