@@ -1,0 +1,28 @@
+fastapi
+uvicorn[standard]
+
+python-dotenv
+pydantic
+
+requests
+
+# LangChain ecosystem
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+
+# PDF loader
+pypdf
+langchain_community
+
+# Embeddings
+sentence-transformers
+
+# Vector database (FAISS)
+faiss-cpu
+
+# Utilities
+numpy
+typing-extensions
