@@ -170,13 +170,29 @@ INSTRUCTIONS:
 - Be clear about what comes from documents vs general knowledge
 - Give a direct, helpful answer
 - Focus on Indian legal context when applicable
-- Format your response with clear sections and bullet points
-- Use proper line breaks for readability
-- Avoid excessive markdown formatting
+
+FORMATTING REQUIREMENTS:
+- Use clean bullet points with dashes (-)
+- NO brackets or parentheses for citations or explanations
+- Instead of "text (explanation)" use "text - explanation"
+- Use plain text section headers WITHOUT any bold or markdown formatting
+- Use numbered lists for sequential items (1. 2. 3.)
+- Use bullet points (-) for non-sequential items
+- Add blank lines between sections
+- Keep formatting clean and professional
+- NO asterisks, NO bold, NO markdown formatting at all
+- Example format:
+  1. Document Classification
+  - Type: Government administrative document
+  - Category: Educational document
+  
+  2. Legal Validity
+  - Primary Legislation: Right to Education Act, 2009 for funding eligibility
+  - Compliance: Document appears valid under IT Act 2000 Section 10
 
 Return JSON:
 {{
-  "answer": "your comprehensive answer with proper formatting",
+  "answer": "your comprehensive answer with proper formatting as shown above",
   "source": "documents and internet" or "documents only" or "internet only"
 }}"""
     else:
@@ -190,13 +206,21 @@ INSTRUCTIONS:
 - Be concise and clear
 - Use your general knowledge
 - Focus on Indian legal context when applicable
-- Format your response with clear sections and bullet points
-- Use proper line breaks for readability
-- Avoid excessive markdown formatting
+
+FORMATTING REQUIREMENTS:
+- Use clean bullet points with dashes (-)
+- NO brackets or parentheses for citations or explanations
+- Instead of "text (explanation)" use "text - explanation"
+- Use plain text section headers WITHOUT any bold or markdown formatting
+- Use numbered lists for sequential items (1. 2. 3.)
+- Use bullet points (-) for non-sequential items
+- Add blank lines between sections
+- Keep formatting clean and professional
+- NO asterisks, NO bold, NO markdown formatting at all
 
 Return JSON:
 {{
-  "answer": "your answer with proper formatting",
+  "answer": "your answer with proper formatting as shown above",
   "source": "internet"
 }}"""
     
@@ -258,17 +282,20 @@ Provide clear, professional legal advice and analysis."""
         elif "```" in content:
             content = content.split("```")[1].split("```")[0].strip()
         
-        # Clean up markdown formatting for better readability
+        # Clean up markdown formatting - remove ALL markdown
         # Remove bold formatting (**text**)
         content = re.sub(r'\*\*([^*]+)\*\*', r'\1', content)
         # Remove italic formatting (*text*)
         content = re.sub(r'\*([^*]+)\*', r'\1', content)
-        # Convert markdown headers to plain text with proper spacing
-        content = re.sub(r'###\s+', '\n', content)
-        content = re.sub(r'##\s+', '\n', content)
-        content = re.sub(r'#\s+', '\n', content)
+        # Convert markdown headers to plain text
+        content = re.sub(r'###\s+', '', content)
+        content = re.sub(r'##\s+', '', content)
+        content = re.sub(r'#\s+', '', content)
         # Clean up multiple newlines
         content = re.sub(r'\n{3,}', '\n\n', content)
+        # Remove parentheses-based explanations and convert to dash format
+        # This helps convert "(explanation)" to "- explanation"
+        content = re.sub(r'\s*\(([^)]+)\)', r' - \1', content)
         
         try:
             return json.loads(content)
